@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com-plugin-device-notifications" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>MobileDeviceNotifications</name>
+  <js-module name="MobileDeviceNotifications" src="www/MobileDeviceNotifications.js">
+      <clobbers target="mobiledevicenotifications" />
+  </js-module>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="MobileDeviceNotifications">
+        <param name="ios-package" value="MobileDeviceNotifications" />
+      </feature>
+    </config-file>
+    <source-file src="src/ios/MobileDeviceNotifications.swift" />
+  </platform>
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="MobileDeviceNotifications">
+        <param name="android-package" value="com.albaresapps.plugins.devicenotifications" />
+      </feature>
+    </config-file>
+    <source-file src="src/android/MobileDeviceNotifications.java" target-dir="src/com/albaresapps/plugins/devicenotifications" />
+  </platform>
+</plugin>
