@@ -43,7 +43,6 @@ public class MobileDeviceNotifications extends CordovaPlugin {
       callbackContext.error(jsonObject);
       return true;
     }
-    return true;
 
   }
 
