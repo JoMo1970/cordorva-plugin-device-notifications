@@ -53,9 +53,9 @@ public class MobileDeviceNotifications extends CordovaPlugin {
 
       //init the notification builder
       NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.cordova.getActivity());
-      mBuilder.setSmallIcon(R.drawable.icon);
-      mBuilder.setContentTitle(this.title);
-      mBuilder.setContentText(this.message);
+      //mBuilder.setSmallIcon(R.drawable.icon);
+      mBuilder.setContentTitle(this.cordova.getActivity().title);
+      mBuilder.setContentText(this.cordova.getActivity().message);
       mBuilder.setSound(soundUri);
 
       //init the parent activity intent
