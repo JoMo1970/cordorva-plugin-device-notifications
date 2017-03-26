@@ -38,7 +38,7 @@ public class MobileDeviceNotifications extends CordovaPlugin {
     }
     else {
       jsonObject.put("status", "failure");
-      callbackContext.failure(jsonObject);
+      callbackContext.error(jsonObject);
       return true;
     }
     return true;
