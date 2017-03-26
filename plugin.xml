@@ -15,7 +15,7 @@
   <platform name="android">
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="MobileDeviceNotifications">
-        <param name="android-package" value="com.albaresapps.plugins.devicenotifications" />
+        <param name="android-package" value="com.albaresapps.plugins.devicenotifications.MobileDeviceNotifications" />
       </feature>
     </config-file>
     <source-file src="src/android/MobileDeviceNotifications.java" target-dir="src/com/albaresapps/plugins/devicenotifications" />
