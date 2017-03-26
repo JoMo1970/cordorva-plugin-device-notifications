@@ -65,7 +65,7 @@ public class MobileDeviceNotifications extends CordovaPlugin {
       Log.i("ANDROIDNOTIFICATIONPLUGIN", "Notification builder defined");
 
       //init the parent activity intent
-      Class<?> parentClass = this.cordova.getActivity().getParent().getClass();
+      Class<?> parentClass = this.cordova.getActivity().getClass();
       Intent parentIntent = new Intent(this.cordova.getActivity(), parentClass);
 
       //init backstack
