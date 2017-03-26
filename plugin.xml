@@ -19,5 +19,6 @@
       </feature>
     </config-file>
     <source-file src="src/android/MobileDeviceNotifications.java" target-dir="src/com/albaresapps/plugins/devicenotifications" />
+    <framework src="com.android.support:appcompat-v7:25.1.1" />
   </platform>
 </plugin>
