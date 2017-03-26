@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 
 public class MobileDeviceNotifications extends CordovaPlugin {
 
@@ -25,6 +26,7 @@ public class MobileDeviceNotifications extends CordovaPlugin {
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    Log.i("ANDROIDNOTIFICATIONPLUGIN", "Notification Plugin Launching");
 
     //local variables
     JSONObject jsonObject = new JSONObject();
@@ -33,6 +35,7 @@ public class MobileDeviceNotifications extends CordovaPlugin {
 
     //check for device notification
     if(this.ACTIONINVOKEDEVICENOTIFICATION.equals(action)) {
+      Log.i("ANDROIDNOTIFICATIONPLUGIN", "Notification Plugin invoked");
       this.showNotification();
       jsonObject.put("status", "success");
       callbackContext.success(jsonObject);
@@ -51,6 +54,7 @@ public class MobileDeviceNotifications extends CordovaPlugin {
 
       //init the sound uri for the notification sound
       Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+      Log.i("ANDROIDNOTIFICATIONPLUGIN", "Sound Url defined");
 
       //init the notification builder
       NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.cordova.getActivity());
@@ -58,6 +62,7 @@ public class MobileDeviceNotifications extends CordovaPlugin {
       mBuilder.setContentTitle(this.title);
       mBuilder.setContentText(this.message);
       mBuilder.setSound(soundUri);
+      Log.i("ANDROIDNOTIFICATIONPLUGIN", "Notification builder defined");
 
       //init the parent activity intent
       Class<?> parentClass = this.cordova.getActivity().getParent().getClass();
@@ -69,10 +74,12 @@ public class MobileDeviceNotifications extends CordovaPlugin {
       stackBuilder.addNextIntent(parentIntent);
       PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
       mBuilder.setContentIntent(resultPendingIntent);
+      Log.i("ANDROIDNOTIFICATIONPLUGIN", "Intent defined");
 
       //fire off the notification with the handler
       NotificationManager nManager = (NotificationManager)this.cordova.getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
       nManager.notify(1, mBuilder.build());
+      Log.i("ANDROIDNOTIFICATIONPLUGIN", "Notification posted");
   }
 
   /*//this function will check if the R class contains the sub-class raw
