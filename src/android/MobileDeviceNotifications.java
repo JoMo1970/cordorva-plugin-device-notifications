@@ -20,14 +20,16 @@ public class MobileDeviceNotifications extends CordovaPlugin {
 
   //private variables
   private final String ACTIONINVOKEDEVICENOTIFICATION = "InvokeDeviceNotification";
+  private String title = "";
+  private String message = "";
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
     //local variables
     JSONObject jsonObject = new JSONObject();
-    String title = args.getString(0);
-    String message = args.getString(1);
+    this.title = args.getString(0);
+    this.message = args.getString(1);
 
     //check for device notification
     if(this.ACTIONINVOKEDEVICENOTIFICATION.equals(action)) {
@@ -54,8 +56,8 @@ public class MobileDeviceNotifications extends CordovaPlugin {
       //init the notification builder
       NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.cordova.getActivity());
       mBuilder.setSmallIcon(android.R.drawable.ic_popup_reminder);
-      mBuilder.setContentTitle(this.cordova.getActivity().title);
-      mBuilder.setContentText(this.cordova.getActivity().message);
+      mBuilder.setContentTitle(this.title);
+      mBuilder.setContentText(this.message);
       mBuilder.setSound(soundUri);
 
       //init the parent activity intent
